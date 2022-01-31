@@ -1,10 +1,4 @@
 # Math_program
-1. Create a simple gui to test out. This will likly not be formatted in anyway that looks nice as of now. I just want to set this up in order to test out the functionality from the get go. Once the basic idea is fleshed out, this can be built upon to add addition functionality and overall design to it. 
-
-Needed:
-Tkinter
-Random
-Simple Python
 
 #### Starting Project - Basic Workings
 I believe it would be easiest to restart this program using just a single form of math, thinking addition, then expanding it once I have the basic framwork setup. This version will likely have no menu framework to it. Will be a simple process of just displaying the correct answer if you choose to give up or get it right. I will need to decide on font size as well while doing this. Right now the default font size is very small all things considered and could be needed to enlarged.
