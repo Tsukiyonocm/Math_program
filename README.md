@@ -7,7 +7,7 @@ Random
 Simple Python
 
 #### Starting Project - Basic Workings
-I believe it would be easiest to restart this program using just a single form of math, thinking addition, then expanding it once I have the basic framwork setup. This version will likely have no menu framework to it. Will be a simple process of just displaying the correct answer if you choose to give up or get it right. 
+I believe it would be easiest to restart this program using just a single form of math, thinking addition, then expanding it once I have the basic framwork setup. This version will likely have no menu framework to it. Will be a simple process of just displaying the correct answer if you choose to give up or get it right. I will need to decide on font size as well while doing this. Right now the default font size is very small all things considered and could be needed to enlarged.
 
 - Framework
 1. Open program and decide what type of math problem you are doing. (addition)
