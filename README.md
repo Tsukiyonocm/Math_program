@@ -28,7 +28,10 @@ These updates will be in the future. I will not be working on these until the ba
 
 
 
-Test Version
+Test Version Update Journal
 ------------
+
+0.02 - Basic layout has been created. Still very basic though everything so far is in the correct spot. The functionality is not setup yet though, I will be working on that soon. Im trying to put the functions into a separate file, though making sure everything works has been a struggle so far. I might have to reassess this as I move forward if it makes sense to keep everything separate.
+
 0.01 - Created basic project folders. Thats it. Im an over-achiever.
 
