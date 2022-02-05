@@ -1,5 +1,6 @@
 # Generate Random Numbers for Addition Problems
 import random
+import tkinter as tk
 
 def gen_ran_num():
     global num_a
@@ -8,4 +9,5 @@ def gen_ran_num():
     return num_return
 
 # def check_answer():
-    
+def check_answer(answer_entry):
+    print(answer_entry.get())
