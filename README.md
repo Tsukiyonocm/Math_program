@@ -30,6 +30,7 @@ These updates will be in the future. I will not be working on these until the ba
 
 Test Version Update Journal
 ------------
+0.03 - I started adding in the check answer button. I didnt think of a way to display if the answer was correct or not so need to look into the TKinter video again in order to properly display a message. I will likely need to create multiple events once the button is clicked, first to display if answer is correct or not, the second event will be to display a correct of incorrect option.
 
 0.02 - Basic layout has been created. Still very basic though everything so far is in the correct spot. The functionality is not setup yet though, I will be working on that soon. Im trying to put the functions into a separate file, though making sure everything works has been a struggle so far. I might have to reassess this as I move forward if it makes sense to keep everything separate.
 
