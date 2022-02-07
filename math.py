@@ -65,6 +65,7 @@ def is_num():
         int(answer_entry.get())
     except ValueError:
         status_bar_var.set(f"This was not a number! Try again!")
+        answer_entry.delete(0, "end")
 
 
 def delete_status():
