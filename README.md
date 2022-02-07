@@ -32,6 +32,8 @@ These updates will be in the future. I will not be working on these until the ba
 
 Test Version Update Journal
 ------------
+0.05 - The basic framework seems to be almost setup now. I have it generating multiple problems, it tells you if the answer is wrong, it will also yell at you if you try typing something that is not a number. Overall I think this is pretty good setup so far. In this particular update I got the button added to generate another problem, I updated the message asking if you wanted to do another problem, also changed display so the correct buttons are displayed depending on the process we are doing.
+
 0.04 - I have the basic framework for a single problem largely set up now. I got it working where the problem is displayed, I can choose an answer and I get feedback on if question is correct or not. If its correct, the Check Answer button disappears and is replaced by a confirmation message. If its wrong, the button remains and a message pops up telling you that it was incorrect. I did also have to not have my functions in a seperate file for now as it was getting to hard to figure out how to get things working. So I will table this and fix this in the future once its more secure and running. 
 
 0.03 - I started adding in the check answer button. I didnt think of a way to display if the answer was correct or not so need to look into the TKinter video again in order to properly display a message. I will likely need to create multiple events once the button is clicked, first to display if answer is correct or not, the second event will be to display a correct of incorrect option.
