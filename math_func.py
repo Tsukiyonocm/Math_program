@@ -4,10 +4,10 @@ import tkinter as tk
 
 def gen_ran_num():
     global num_a
-    num_return = random.randint(0, 10)
-    print(num_return)
-    return num_return
+    global num_b
+    num_a = random.randint(0, 10)
+    num_b = random.randint(0, 10)
+    print(num_a, num_b)
+    return (num_a, num_b)
 
 # def check_answer():
-def check_answer(answer_entry):
-    print(answer_entry.get())
