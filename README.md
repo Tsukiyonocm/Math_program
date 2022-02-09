@@ -35,6 +35,8 @@ These updates will be in the future. I will not be working on these until the ba
 
 7. Is it possible to host the program online in order for me to show others it?
 
+8. Create a custom entry for the difficulty option screen. This is because sometimes the students would be learning particular numbers. For instance, only learning the addition problems of numbers + 4, or the 5 times tables for instance. 
+
 
 
 #### Function Description
