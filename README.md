@@ -10,7 +10,7 @@ I believe it would be easiest to restart this program using just a single form o
 
 3. After choosing your difficulty the problem is put on the screen. You type your answer into an entry box to see if correct.
 
-4. You hit submit to see if you are correct. If you are, the system congrats you and asks if you want to play again (yes or no), if wrong, the system tells you to try again and blanks the entry box for you to type a new choice. In addition, there will be a button called "Give Up" which generates if you cant figure it out and it will display the correct answer in the entry box. 
+4. You hit submit to see if you are correct. If you are, the system congrats you and asks if you want to play again (yes or no), if wrong, the system tells you to try again and blanks the entry box for you to type a new choice. In addition, there will be a button called "Give Up" which generates if you cant figure it out and it will display the correct answer in the entry box.
 
 5. If you got the question correct, there will be two options: Play Again? and Close Program? Depending on your choice it will either generate another problem for you to do, though this will not repeat the first two steps, it will just generate another problem based on past settings. If you choose to close, it just shuts the whole thing down.
 
@@ -20,7 +20,7 @@ These updates will be in the future. I will not be working on these until the ba
 1. Build out the framework to do multiple types of math. This can include: Addition, Subtraction, Multiplication, and Division.
     - Thinking this could be a drop down menu? Or perhaps something buried in the toolbar to choose as well. This will become more fluid as I learn more of the capabilities of Tkinter and what can be done in regards to regenerating the buttons.
 
-2. How many questions would you like to do? The idea here is that you are generating a group of problems to see how many you can get right. Do 10 practice problems per day? 20 in a sitting? you can choose this from the get go and this would bypass, to an extent step 5 in the basic framework up till the last problem is done anyway. 
+2. How many questions would you like to do? The idea here is that you are generating a group of problems to see how many you can get right. Do 10 practice problems per day? 20 in a sitting? you can choose this from the get go and this would bypass, to an extent step 5 in the basic framework up till the last problem is done anyway.
     - Could have tracking here so you know how many you got right vs wrong.
     - This could be added as a time trial as well to mimic a testing environment.
     - Could eliminate the option to change your answer as well. Then at the end, displaying the questions you got right and wrong with the associated correct answers.
@@ -35,17 +35,19 @@ These updates will be in the future. I will not be working on these until the ba
 
 7. Is it possible to host the program online in order for me to show others it?
 
+
+
 #### Function Description
 
-<b>gen_ran_num</b> - This one is sort of self explanatory. It generates the random numbers that is used by the program in order to generate the math problems. In the case of Division and Subtraction, the numbers will likely need to be verified to be placed in the correct order via another function later.
+<b>gen_ran_num()</b> - This one is sort of self explanatory. It generates the random numbers that is used by the program in order to generate the math problems. In the case of Division and Subtraction, the numbers will likely need to be verified to be placed in the correct order via another function later.
 
-<b>check_answer_add</b> - The first thing this does is check if the entry box entry is a number by calling is_num(description below).If it is, then it checks to see if the answer_entry is equal to the sum of both num_a and num_b. If yes, we display the status_bar correct message, we make the check_button disappear, and the another_problem button appears instead allowing the user to do another problem. Else, the program generates the status_bar message that you were incorrect, resets the answer_entry to blank and allows the user to try again.
+<b>check_answer_add()</b> - The first thing this does is check if the entry box entry is a number by calling is_num(description below).If it is, then it checks to see if the answer_entry is equal to the sum of both num_a and num_b. If yes, we display the status_bar correct message, we make the check_button disappear, and the another_problem button appears instead allowing the user to do another problem. Else, the program generates the status_bar message that you were incorrect, resets the answer_entry to blank and allows the user to try again.
 
-<b>is_num</b> - First the program tries to set the answer_entry to an integer. If this succeds, all good and we move out of the function. If it fails to do that though, such as in case of someone entering text instead of a number, the status_bar is set to text telling the user that only numbers can be entered. Then it resets the answer_entry to blank again.
+<b>is_num()</b> - First the program tries to set the answer_entry to an integer. If this succeds, all good and we move out of the function. If it fails to do that though, such as in case of someone entering text instead of a number, the status_bar is set to text telling the user that only numbers can be entered. Then it resets the answer_entry to blank again.
 
-<b>delete_status</b> - Sets the answer_entry to blank while also clearing the status_bar to blank as well. (I dont believe this one is being used much currently, so this might get deleted or it might be more useful in the future.)
+<b>delete_status()</b> - Sets the answer_entry to blank while also clearing the status_bar to blank as well. (I dont believe this one is being used much currently, so this might get deleted or it might be more useful in the future.)
 
-<b>another_problem</b> - Reset the random integer associated with num_a and num_b. Makes the another_problem button disappear and resets the check_button to be visible instead. Then it runs the delete_status function in order to clear the entry box and the status_bar.
+<b>another_problem()</b> - Reset the random integer associated with num_a and num_b. Makes the another_problem button disappear and resets the check_button to be visible instead. Then it runs the delete_status function in order to clear the entry box and the status_bar.
 
 
 Test Version Update Journal
@@ -59,4 +61,27 @@ Test Version Update Journal
 0.02 - Basic layout has been created. Still very basic though everything so far is in the correct spot. The functionality is not setup yet though, I will be working on that soon. Im trying to put the functions into a separate file, though making sure everything works has been a struggle so far. I might have to reassess this as I move forward if it makes sense to keep everything separate.
 
 0.01 - Created basic project folders. Thats it. Im an over-achiever.
+
+
+
+#### Links that helped me out
+
+- Multiple Lines of Text in Tkinter Label
+https://www.tutorialspoint.com/how-to-display-multiple-lines-of-text-in-tkinter-label#:~:text=You%20can%20also%20add%20multiple,line%20in%20the%20Label%20widget.
+
+- Set Text of Tkinter Widget with a Button
+https://www.delftstack.com/howto/python-tkinter/how-to-set-text-of-tkinter-entry-widget-by-using-a-button/
+
+- How to change visibility of a button in tkinter
+https://www.reddit.com/r/learnpython/comments/b4n1pl/how_to_change_the_visibility_of_a_button_in/
+
+- Setting and retrieving values of Tkinter variables
+https://www.geeksforgeeks.org/python-setting-and-retrieving-values-of-tkinter-variable/
+
+- General Tkinter Entry widget
+https://pythonguides.com/python-tkinter-entry/
+https://www.geeksforgeeks.org/python-tkinter-entry-widget/
+
+- Initial Tkinter Basics Video Tutorial Alan D Moore
+https://www.youtube.com/playlist?list=PLXlKT56RD3kBUYQiG_jrAMOtm_SfPLvwR
 
