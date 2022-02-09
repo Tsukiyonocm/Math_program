@@ -17,7 +17,7 @@ I believe it would be easiest to restart this program using just a single form o
 #### Future Updates
 These updates will be in the future. I will not be working on these until the bare minimal is setup for the basic setup mentioned above. (Bare minimal was reached at 0.05 so some of this will start being integrated from there after.)
 
-1. Build out the framework to do multiple types of math. This can include: Addition, Subtraction, Multiplication, and Division.
+1. Build out the framework to do multiple types of math. This can include: Addition, Subtraction, Multiplication, and Division. **Starting Update 0.06, this functionality is basically added, just needs fleshed out.** 
     - Thinking this could be a drop down menu? Or perhaps something buried in the toolbar to choose as well. This will become more fluid as I learn more of the capabilities of Tkinter and what can be done in regards to regenerating the buttons.
 
 2. How many questions would you like to do? The idea here is that you are generating a group of problems to see how many you can get right. Do 10 practice problems per day? 20 in a sitting? you can choose this from the get go and this would bypass, to an extent step 5 in the basic framework up till the last problem is done anyway.
@@ -52,6 +52,8 @@ These updates will be in the future. I will not be working on these until the ba
 
 Test Version Update Journal
 ------------
+0.06 - Large Update overall. I added in the intial selection screen to choose the type of math you wish to do. Though as of now, only the addition is working. Once the selection is made, I also added in the functionality to choose your difficulty level as well which can range from numbers maxing at 9 up to 9999. All this required a fair bit of remastering of the various functions and what they set out to accomplish which I will update the definitions for those at a later time. I will need to research how to work these button variables I believe a bit, as of now, the difficulty is handled through 4 seperate functions that all do largely the same basic things, I imagine there is an easier way to do this, or at least a more efficient way to do it. For now though, my code works and I can revamp it later on. 
+
 0.05 - The basic framework seems to be almost setup now. I have it generating multiple problems, it tells you if the answer is wrong, it will also yell at you if you try typing something that is not a number. Overall I think this is pretty good setup so far. In this particular update I got the button added to generate another problem, I updated the message asking if you wanted to do another problem, also changed display so the correct buttons are displayed depending on the process we are doing. Also added in a basic number check system to make sure we are not typing letters in for a number problem.
 
 0.04 - I have the basic framework for a single problem largely set up now. I got it working where the problem is displayed, I can choose an answer and I get feedback on if question is correct or not. If its correct, the Check Answer button disappears and is replaced by a confirmation message. If its wrong, the button remains and a message pops up telling you that it was incorrect. I did also have to not have my functions in a seperate file for now as it was getting to hard to figure out how to get things working. So I will table this and fix this in the future once its more secure and running. 
