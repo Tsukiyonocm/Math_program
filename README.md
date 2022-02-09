@@ -3,15 +3,20 @@
 #### Starting Project - Basic Workings
 I believe it would be easiest to restart this program using just a single form of math, thinking addition, then expanding it once I have the basic framwork setup. This version will likely have no menu framework to it. Will be a simple process of just displaying the correct answer if you choose to give up or get it right. I will need to decide on font size as well while doing this. Right now the default font size is very small all things considered and could be needed to enlarged.
 
-- Framework
-1. Open program and decide what type of math problem you are doing. (addition)
-2. Generate and display the math problem with an input box for the answer.
-3. A simple button to select when complete which generates a message saying if its correct or not.
-4. If wrong, you can re-enter for another try, or, give up, where the correct answer will be displayed.
-5. Play again? If yes, repeat step 2 thru 5. If no, close program. 
+- Detailed Initial Framework
+1. Upon opening of program, you are given a screen where you can choose the type of problem you want to do. (Addition, Subtraction, Multiplication, Division).
+
+2. After clicking your choice, the next screen has you decide to what level you want to make for difficulty.     (1, 10, 100, 1000). For instance, if you choose Addition first and then choose 1, your problems will max value at 9, if you choose 10 it maxes at 99, and so on.
+
+3. After choosing your difficulty the problem is put on the screen. You type your answer into an entry box to see if correct.
+
+4. You hit submit to see if you are correct. If you are, the system congrats you and asks if you want to play again (yes or no), if wrong, the system tells you to try again and blanks the entry box for you to type a new choice. In addition, there will be a button called "Give Up" which generates if you cant figure it out and it will display the correct answer in the entry box. 
+
+5. If you got the question correct, there will be two options: Play Again? and Close Program? Depending on your choice it will either generate another problem for you to do, though this will not repeat the first two steps, it will just generate another problem based on past settings. If you choose to close, it just shuts the whole thing down.
 
 #### Future Updates
-These updates will be in the future. I will not be working on these until the bare minimal is setup for the basic setup mentioned above.
+These updates will be in the future. I will not be working on these until the bare minimal is setup for the basic setup mentioned above. (Bare minimal was reached at 0.05 so some of this will start being integrated from there after.)
+
 1. Build out the framework to do multiple types of math. This can include: Addition, Subtraction, Multiplication, and Division.
     - Thinking this could be a drop down menu? Or perhaps something buried in the toolbar to choose as well. This will become more fluid as I learn more of the capabilities of Tkinter and what can be done in regards to regenerating the buttons.
 
@@ -26,8 +31,21 @@ These updates will be in the future. I will not be working on these until the ba
 
 5. Explaining the correct answer? This would likely be incredibly difficult to do simply because each problem would have somewhat unique answers and while it could be coded out, would be a bit boring and largely be very often similar answers in verbatim. Still, it could be of interest.
 
-6. Refining the file system so that the overall code will be more specialized and like code in its own file system. 
+6. Refining the file system so that the overall code will be more specialized and like code in its own file system.
 
+7. Is it possible to host the program online in order for me to show others it?
+
+#### Function Description
+
+<b>gen_ran_num</b> - This one is sort of self explanatory. It generates the random numbers that is used by the program in order to generate the math problems. In the case of Division and Subtraction, the numbers will likely need to be verified to be placed in the correct order via another function later.
+
+<b>check_answer_add</b> - The first thing this does is check if the entry box entry is a number by calling is_num(description below).If it is, then it checks to see if the answer_entry is equal to the sum of both num_a and num_b. If yes, we display the status_bar correct message, we make the check_button disappear, and the another_problem button appears instead allowing the user to do another problem. Else, the program generates the status_bar message that you were incorrect, resets the answer_entry to blank and allows the user to try again.
+
+<b>is_num</b> - First the program tries to set the answer_entry to an integer. If this succeds, all good and we move out of the function. If it fails to do that though, such as in case of someone entering text instead of a number, the status_bar is set to text telling the user that only numbers can be entered. Then it resets the answer_entry to blank again.
+
+<b>delete_status</b> - Sets the answer_entry to blank while also clearing the status_bar to blank as well. (I dont believe this one is being used much currently, so this might get deleted or it might be more useful in the future.)
+
+<b>another_problem</b> - Reset the random integer associated with num_a and num_b. Makes the another_problem button disappear and resets the check_button to be visible instead. Then it runs the delete_status function in order to clear the entry box and the status_bar.
 
 
 Test Version Update Journal
