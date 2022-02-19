@@ -37,6 +37,13 @@ These updates will be in the future. I will not be working on these until the ba
 
 8. Create a custom entry for the difficulty option screen. This is because sometimes the students would be learning particular numbers. For instance, only learning the addition problems of numbers + 4, or the 5 times tables for instance. 
 
+#### Next Project to work on:
+1. Quit Button - Right now the only way to close the program is to just hit the "x" on the top right corner. I would like there to be a button you can click on there to do the same functionality. The Quit button will display on the choice screens where you choose math type and difficulty. When in the middle of a math problem, I am thinking it could be displayed near the bottom of the page? Or perhaps underneath the submit and give up buttons.
+
+2. Give Up - In the middle of doing a math problem, there is no way in order to give up if you cant figure it out. So clicking this button would display a message saying you gave up and this is the correct answer.
+
+3. Research OOP a bit as that might help control the functions for the math generation parts of the program.
+
 
 
 #### Function Description
@@ -49,7 +56,25 @@ These updates will be in the future. I will not be working on these until the ba
 
 <b>delete_status()</b> - Sets the answer_entry to blank while also clearing the status_bar to blank as well. (I dont believe this one is being used much currently, so this might get deleted or it might be more useful in the future.)
 
-<b>another_problem()</b> - Reset the random integer associated with num_a and num_b. Makes the another_problem button disappear and resets the check_button to be visible instead. Then it runs the delete_status function in order to clear the entry box and the status_bar.
+<b>difficulty_choice</b> - This turns on all the buttons for the choice options: one_button, ten_button, hund_button, and thou_button. Then it proceeds to call turn_off_math_type function which turns off the choices of math types.
+
+<b>add_diff_set_1</b> - This allows us to update the if the user chooses the easiest difficulty. This makes the maximum value used by the problems to be 9. This will call addition_choice with the new value, and turn_off_diff_opt.
+
+<b>add_diff_set_10</b> - This allows us to update the if the user chooses a middle difficulty. This makes the maximum value used by the problems to be 99. This will call addition_choice with the new value, and turn_off_diff_opt.
+
+<b>add_diff_set_100</b> - This allows us to update the if the user chooses a middle difficulty. This makes the maximum value used by the problems to be 999. This will call addition_choice with the new value, and turn_off_diff_opt.
+
+<b>add_diff_set_1000</b> - This allows us to update the if the user chooses a hardest difficulty. This makes the maximum value used by the problems to be 9999. This will call addition_choice with the new value, and turn_off_diff_opt.
+
+<b>another_problem()</b> - Reset the random integer associated with num_a and num_b. Makes the another_problem button disappear and resets the check_button to be visible instead. Then it runs the delete_status function in order to clear the entry box and the status_bar. Lastly, this also calls turn_on_add which turns on all the labels and buttons associated with doing addition problems.
+
+<b>addition_choice</b> - This first calls another_problem in order to set the random numbers, then it calls turn_on_add in order to setup and start the first addition problem (or subsequent addition problems).
+
+<b>turn_on_add</b> - This function simply turns on all the labels, buttons, and entry box for the addition problems.
+
+<b>turn_off_math_type</b> - The start page where you choose between addition, subtraction, division and multiplication, this is called in order to make those choices disappear after the user makes a choice.
+
+<b>turn_off_diff_opt</b> - When choosing the difficulty, this is called after to make those options disappear.
 
 
 Test Version Update Journal
@@ -78,6 +103,8 @@ https://www.delftstack.com/howto/python-tkinter/how-to-set-text-of-tkinter-entry
 
 - How to change visibility of a button in tkinter
 https://www.reddit.com/r/learnpython/comments/b4n1pl/how_to_change_the_visibility_of_a_button_in/
+https://stackoverflow.com/questions/34276672/how-to-make-a-label-appear-then-disappear-after-a-certain-amount-of-time-in-pyth
+https://www.tutorialspoint.com/get-the-text-of-a-button-widget-in-tkinter
 
 - Setting and retrieving values of Tkinter variables
 https://www.geeksforgeeks.org/python-setting-and-retrieving-values-of-tkinter-variable/
@@ -88,4 +115,7 @@ https://www.geeksforgeeks.org/python-tkinter-entry-widget/
 
 - Initial Tkinter Basics Video Tutorial Alan D Moore
 https://www.youtube.com/playlist?list=PLXlKT56RD3kBUYQiG_jrAMOtm_SfPLvwR
+
+- Make Tkinter buttons same size
+https://stackoverflow.com/questions/47860148/make-tkinter-buttons-the-same-size/62777051
 
