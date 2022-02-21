@@ -79,6 +79,14 @@ check_button.grid_forget()
 another_button = tk.Button(root, text="Another Problem?", command=lambda: another_problem(diff_val))
 another_button.grid_forget()
 
+# Give Up Button
+give_up = tk.Button(root, text="Give up?", command=lambda: gave_up())
+give_up.grid_forget()
+
+# Quit Button
+quit_button = tk.Button(root, text="Quit For Now?", command=lambda: quit_prog())
+quit_button.grid(row=4, column=1, columnspan=5, sticky="we", padx=5, pady=5)
+
 # Status Bar
 status_bar_var = tk.StringVar()
 status_bar_label = tk.Label(root, textvariable=status_bar_var)
@@ -94,6 +102,8 @@ def check_answer_add():
     else:
         status_bar_var.set(f"This was incorrect, try again!")
         answer_entry.delete(0, "end")
+        quit_button.grid_forget()
+        give_up.grid(row=4, column=1, columnspan=5, sticky="we", padx=5, pady=5)
     print(answer_entry.get())
 
 
@@ -159,6 +169,7 @@ def turn_on_add():
     equal_label.grid(row=1, column=4)
     answer_entry.grid(row=1, column=5)
     check_button.grid(row=2, column=1, columnspan=5, sticky="we", pady=10)
+    quit_button.grid(row=4, column=1, columnspan=5, sticky="we", padx=5, pady=5)
     status_bar_label.grid(row=100, column=1, columnspan=5, ipadx=5, ipady=5)
 
 def turn_off_math_type():
@@ -173,11 +184,19 @@ def turn_off_diff_opt():
     hund_button.grid_forget()
     thou_button.grid_forget()
 
+def quit_prog():
+    root.destroy()
+
+def gave_up():
+    answer = num_a.get() + num_b.get()
+    status_bar_var.set(f"The correct answer was: {answer}")
+    another_button.grid(row=3, column=1, columnspan=5, sticky="we", pady=10)
+    give_up.grid_forget()
+
 def not_active():
     # for testing purposes only
     status_bar_label.grid(row=100, column=1, columnspan=5, ipadx=5, ipady=5)
     status_bar_var.set(f"This is not active yet!! Sorry!")
-
 
 # Final Line
 root.mainloop()

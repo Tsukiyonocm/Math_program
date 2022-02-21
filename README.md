@@ -76,6 +76,10 @@ These updates will be in the future. I will not be working on these until the ba
 
 <b>turn_off_diff_opt</b> - When choosing the difficulty, this is called after to make those options disappear.
 
+<b>quit_prog</b> - This does exactly as it would sound like, it quits out of the program.
+
+<b>gave_up</b> - When in the middle of a problem, if you have gotten it wrong there is now a chance to give up and have the answer displayed. This function first pulls the numbers from the problem and figures out the answer. Displays the answer to the user, while loading the another_problem button to display and hiding the give_up button. 
+
 
 Test Version Update Journal
 ------------
