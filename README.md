@@ -38,11 +38,9 @@ These updates will be in the future. I will not be working on these until the ba
 8. Create a custom entry for the difficulty option screen. This is because sometimes the students would be learning particular numbers. For instance, only learning the addition problems of numbers + 4, or the 5 times tables for instance. 
 
 #### Next Project to work on:
-1. Quit Button - Right now the only way to close the program is to just hit the "x" on the top right corner. I would like there to be a button you can click on there to do the same functionality. The Quit button will display on the choice screens where you choose math type and difficulty. When in the middle of a math problem, I am thinking it could be displayed near the bottom of the page? Or perhaps underneath the submit and give up buttons.
+1. Start working on subtraction. There will need to be a check for making sure the first number is always higher than the second number.
 
-2. Give Up - In the middle of doing a math problem, there is no way in order to give up if you cant figure it out. So clicking this button would display a message saying you gave up and this is the correct answer.
-
-3. Research OOP a bit as that might help control the functions for the math generation parts of the program.
+2. Research OOP a bit as that might help control the functions for the math generation parts of the program.
 
 
 
@@ -83,7 +81,9 @@ These updates will be in the future. I will not be working on these until the ba
 
 Test Version Update Journal
 ------------
-0.06 - Large Update overall. I added in the intial selection screen to choose the type of math you wish to do. Though as of now, only the addition is working. Once the selection is made, I also added in the functionality to choose your difficulty level as well which can range from numbers maxing at 9 up to 9999. All this required a fair bit of remastering of the various functions and what they set out to accomplish which I will update the definitions for those at a later time. I will need to research how to work these button variables I believe a bit, as of now, the difficulty is handled through 4 seperate functions that all do largely the same basic things, I imagine there is an easier way to do this, or at least a more efficient way to do it. For now though, my code works and I can revamp it later on. 
+0.07 - A somewhat major update to the overall code base even though functionality has not changed much. The main changes right now is the addition of the "Give Up" and "Quit" functionality. These do as they say, either quit the program, or give up on the problem you were trying. Otherwise I have spent a good bit of time reformatting the code so that the math symbol, math difficulty, and type of math to be done can be done inside of one function. This is in contrast to it originally being done inside of several functions, as was the choice with the difficulty. I have also begun building out the subtraction side of things as well. I believe once I get this basic framework setup, that the rest will come along quite quickly.
+
+0.06 - Large Update overall. I added in the initial selection screen to choose the type of math you wish to do. Though as of now, only the addition is working. Once the selection is made, I also added in the functionality to choose your difficulty level as well which can range from numbers maxing at 9 up to 9999. All this required a fair bit of remastering of the various functions and what they set out to accomplish which I will update the definitions for those at a later time. I will need to research how to work these button variables I believe a bit, as of now, the difficulty is handled through 4 seperate functions that all do largely the same basic things, I imagine there is an easier way to do this, or at least a more efficient way to do it. For now though, my code works and I can revamp it later on. 
 
 0.05 - The basic framework seems to be almost setup now. I have it generating multiple problems, it tells you if the answer is wrong, it will also yell at you if you try typing something that is not a number. Overall I think this is pretty good setup so far. In this particular update I got the button added to generate another problem, I updated the message asking if you wanted to do another problem, also changed display so the correct buttons are displayed depending on the process we are doing. Also added in a basic number check system to make sure we are not typing letters in for a number problem.
 
