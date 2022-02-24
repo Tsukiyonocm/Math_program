@@ -13,12 +13,17 @@ I believe it would be easiest to restart this program using just a single form o
 4. You hit submit to see if you are correct. If you are, the system congrats you and asks if you want to play again (yes or no), if wrong, the system tells you to try again and blanks the entry box for you to type a new choice. In addition, there will be a button called "Give Up" which generates if you cant figure it out and it will display the correct answer in the entry box.
 
 5. If you got the question correct, there will be two options: Play Again? and Close Program? Depending on your choice it will either generate another problem for you to do, though this will not repeat the first two steps, it will just generate another problem based on past settings. If you choose to close, it just shuts the whole thing down.
+#### Completed Updates
+- Basic functionality for all math types is complete and running. (Starting at ver. 0.08)
+- Give up button works mid problem if the user gets it wrong and cant figure it out. (Starting at ver. 0.07)
+- Quit button added to all pages except mid-problem. (Starting at ver 0.07)
+- Difficulty options for all math types implemented. (Starting at ver. 0.06)
+
 
 #### Future Updates
 These updates will be in the future. I will not be working on these until the bare minimal is setup for the basic setup mentioned above. (Bare minimal was reached at 0.05 so some of this will start being integrated from there after.)
 
-1. Build out the framework to do multiple types of math. This can include: Addition, Subtraction, Multiplication, and Division. **Starting Update 0.06, this functionality is basically added, just needs fleshed out.** 
-    - Thinking this could be a drop down menu? Or perhaps something buried in the toolbar to choose as well. This will become more fluid as I learn more of the capabilities of Tkinter and what can be done in regards to regenerating the buttons.
+1. I would like the difficulty and math type questions to be a drop down menu so things can be changed on the fly instead of needing to restart the whole program to change things.
 
 2. How many questions would you like to do? The idea here is that you are generating a group of problems to see how many you can get right. Do 10 practice problems per day? 20 in a sitting? you can choose this from the get go and this would bypass, to an extent step 5 in the basic framework up till the last problem is done anyway.
     - Could have tracking here so you know how many you got right vs wrong.
@@ -27,21 +32,13 @@ These updates will be in the future. I will not be working on these until the ba
 
 3. Adding user profiles? This would likely require some sort of database to be added (sql, postgres, nosql?). Would be great for learning purposes on my own at least. Towards the project, you could track your level over time and track the amount of tests you do and how many you get right.
 
-4. Choose the difficulty of the problem? For instance, at the beginning you have a choice between: 1, 10, 100, 1000. What this means is the numbers generated would be that deep. For example if you choose 10, this means the numbers could be generated up to 99, so double digits. 100 would generate up to 999 and so on.
+4. Explaining the correct answer? This would likely be incredibly difficult to do simply because each problem would have somewhat unique answers and while it could be coded out, would be a bit boring and largely be very often similar answers in verbatim. Still, it could be of interest.
 
-5. Explaining the correct answer? This would likely be incredibly difficult to do simply because each problem would have somewhat unique answers and while it could be coded out, would be a bit boring and largely be very often similar answers in verbatim. Still, it could be of interest.
+5. Refining the file system so that the overall code will be more specialized and like code in its own file system.
 
-6. Refining the file system so that the overall code will be more specialized and like code in its own file system.
+6. Is it possible to host the program online in order for me to show others it?
 
-7. Is it possible to host the program online in order for me to show others it?
-
-8. Create a custom entry for the difficulty option screen. This is because sometimes the students would be learning particular numbers. For instance, only learning the addition problems of numbers + 4, or the 5 times tables for instance. 
-
-#### Next Project to work on:
-1. I believe I have some redundency in my code base currently. So I am going to be working on revamping it and see if I can minimize the work done so far to get it functioning with less overall code.
-
-2. Research OOP a bit as that might help control the functions for the math generation parts of the program.
-
+7. Create a custom entry for the difficulty option screen. This is because sometimes the students would be learning particular numbers. For instance, only learning the addition problems of numbers + 4, or the 5 times tables for instance.
 
 
 #### Function Description
@@ -81,6 +78,8 @@ These updates will be in the future. I will not be working on these until the ba
 
 Test Version Update Journal
 ------------
+0.08 - Major Updates seem to be rolling out daily right now. I have all math types working. I have reworked the code base again and got rid of a good bit of redundent code in the process. I was right in the sense that once I got subtraction added, the rest of things would fall into place quickly with just a couple of lines of code. The main problem I ran into was with division because of dividing by 0, which cant be done. So I had to write a extra if statement to change a 0 to 1 if it popped up only in the context of the division practice. I am pretty sure I can still rewrnite a few sections of code a bit better, but, right now everything works and I am overall happy with my work here. Now I think its time to move on to some of the other features I wished to add to this. 
+
 0.07 - A somewhat major update to the overall code base even though functionality has not changed much. The main changes right now is the addition of the "Give Up" and "Quit" functionality. These do as they say, either quit the program, or give up on the problem you were trying. Otherwise I have spent a good bit of time reformatting the code so that the math symbol, math difficulty, and type of math to be done can be done inside of one function. This is in contrast to it originally being done inside of several functions, as was the choice with the difficulty. I have also begun building out the subtraction side of things as well. I believe once I get this basic framework setup, that the rest will come along quite quickly.
 
 0.06 - Large Update overall. I added in the initial selection screen to choose the type of math you wish to do. Though as of now, only the addition is working. Once the selection is made, I also added in the functionality to choose your difficulty level as well which can range from numbers maxing at 9 up to 9999. All this required a fair bit of remastering of the various functions and what they set out to accomplish which I will update the definitions for those at a later time. I will need to research how to work these button variables I believe a bit, as of now, the difficulty is handled through 4 seperate functions that all do largely the same basic things, I imagine there is an easier way to do this, or at least a more efficient way to do it. For now though, my code works and I can revamp it later on. 

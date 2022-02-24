@@ -31,10 +31,10 @@ addition_button.grid(row=1, column=1, padx=5, pady=5, ipadx=15)
 subtraction_button = tk.Button(root, text="Subtraction", width = 20, command=lambda m="sub": difficulty_choice(m))
 subtraction_button.grid(row=1, column=2, padx=5, pady=5, ipadx=15)
 
-multiplication_button = tk.Button(root, text="Multiplication", width = 20, command=lambda m="multi": not_active(m))
+multiplication_button = tk.Button(root, text="Multiplication", width = 20, command=lambda m="mul": difficulty_choice(m))
 multiplication_button.grid(row=2, column=1, padx=5, pady=5, ipadx=15)
 
-division_button = tk.Button(root, text="Division", width = 20, command=lambda m="div": not_active(m))
+division_button = tk.Button(root, text="Division", width = 20, command=lambda m="div": difficulty_choice(m))
 division_button.grid(row=2, column=2, padx=5, pady=5, ipadx=15)
 
 
@@ -100,7 +100,7 @@ status_bar_label.grid_forget()
 def check_answer():
     is_num()
     ans = math_answer()
-    if ans == int(answer_entry.get()):
+    if ans == round(float(answer_entry.get()), 2):
         status_bar_var.set(f"This was correct. \n Would you like to do another problem?")
         check_button.grid_forget()
         another_button.grid(row=3, column=1, columnspan=5, sticky="we", pady=10)
@@ -112,14 +112,16 @@ def check_answer():
 
 def math_answer():
     math_answers = {"add": op.add(num_a.get(), num_b.get()),
-                    "sub": op.sub(num_a.get(), num_b.get())}
+                    "sub": op.sub(num_a.get(), num_b.get()),
+                    "mul": op.mul(num_a.get(), num_b.get()),
+                    "div": op.truediv(num_a.get(), num_b.get())}
     for key in math_answers:
         if key == math_type:
             return math_answers[key]
 
 def is_num():
     try:
-        int(answer_entry.get())
+        float(answer_entry.get())
     except ValueError:
         status_bar_var.set(f"This was not a number! Try again!")
         answer_entry.delete(0, "end")
@@ -144,7 +146,7 @@ def set_math_type(m):
         math_type = m
     elif m == "sub":
         math_type = m
-    elif m == "multi":
+    elif m == "mul":
         math_type = m
     elif m == "div":
         math_type = m
@@ -163,15 +165,12 @@ def set_math_dif(mv):
 
 def start_problems(mv):
     set_math_dif(mv)
-    if math_type == "add":
-        math_choice(diff_val)
-        turn_off_diff_opt()
-    elif math_type == "sub":
-        turn_off_diff_opt()
-        math_choice(diff_val)
+    math_choice(diff_val)
+    turn_off_diff_opt()
+
 
 def gen_problem(diff_val):
-    if math_type == "sub":
+    if math_type == "sub" or math_type == "div":
         set_a_max()
     else:
         num_a.set(gen_ran_num(diff_val))
@@ -183,6 +182,12 @@ def gen_problem(diff_val):
 def set_a_max():
     a = gen_ran_num(diff_val)
     b = gen_ran_num(diff_val)
+    if math_type == "div":
+        if a == 0:
+            a = gen_ran_num(diff_val)
+        elif b == 0:
+            b = gen_ran_num(diff_val)
+        print(a, b)
     if a >= b:
         num_a.set(a)
         num_b.set(b)
@@ -208,7 +213,7 @@ def turn_on_prob():
 
 def set_math_sym():
     global math_symbol
-    math_types = {"add": " + ", "sub": " - "}
+    math_types = {"add": " + ", "sub": " - ", "mul": " x ", "div": " / "}
     for key in math_types.keys():
         if key == math_type:
             math_symbol.set(math_types[key])
@@ -236,12 +241,6 @@ def gave_up():
     another_button.grid(row=3, column=1, columnspan=5, sticky="we", pady=10)
     give_up.grid_forget()
     quit_button.grid(row=4, column=1, columnspan=5, sticky="we", padx=5, pady=5)
-
-def not_active(m):
-    # for testing purposes only
-    status_bar_label.grid(row=100, column=1, columnspan=5, ipadx=5, ipady=5)
-    set_math_type(m)
-    status_bar_var.set(f"This is not active yet!! Sorry!")
 
 # Final Line
 root.mainloop()
