@@ -76,11 +76,11 @@ answer_entry = tk.Entry(root)
 answer_entry.grid_forget()
 
 # Check Answer Button
-check_button = tk.Button(root, text="Check Answer", command=lambda: check_answer_add())
+check_button = tk.Button(root, text="Check Answer", command=lambda: check_answer())
 check_button.grid_forget()
 
 # Another Problem? Button
-another_button = tk.Button(root, text="Another Problem?", command=lambda: add_problem(diff_val))
+another_button = tk.Button(root, text="Another Problem?", command=lambda: gen_problem(diff_val))
 another_button.grid_forget()
 
 # Give Up Button
@@ -97,10 +97,10 @@ status_bar_label = tk.Label(root, textvariable=status_bar_var)
 status_bar_label.grid_forget()
 
 
-def check_answer_add():
+def check_answer():
     is_num()
-    # if num_a.get() + num_b.get() == int(answer_entry.get()):
-    if op.add(num_a.get(), num_b.get()) == int(answer_entry.get()):
+    ans = math_answer()
+    if ans == int(answer_entry.get()):
         status_bar_var.set(f"This was correct. \n Would you like to do another problem?")
         check_button.grid_forget()
         another_button.grid(row=3, column=1, columnspan=5, sticky="we", pady=10)
@@ -109,8 +109,13 @@ def check_answer_add():
         answer_entry.delete(0, "end")
         quit_button.grid_forget()
         give_up.grid(row=4, column=1, columnspan=5, sticky="we", padx=5, pady=5)
-    print(answer_entry.get())
 
+def math_answer():
+    math_answers = {"add": op.add(num_a.get(), num_b.get()),
+                    "sub": op.sub(num_a.get(), num_b.get())}
+    for key in math_answers:
+        if key == math_type:
+            return math_answers[key]
 
 def is_num():
     try:
@@ -157,30 +162,39 @@ def set_math_dif(mv):
         diff_val = 10000
 
 def start_problems(mv):
+    set_math_dif(mv)
     if math_type == "add":
-        set_math_dif(mv)
-        addition_choice(diff_val)
+        math_choice(diff_val)
         turn_off_diff_opt()
     elif math_type == "sub":
-        set_math_dif(mv)
         turn_off_diff_opt()
-        subtraction_choice(diff_val)
+        math_choice(diff_val)
 
-def add_problem(diff_val):
-    num_a.set(gen_ran_num(diff_val))
-    num_b.set(gen_ran_num(diff_val))
+def gen_problem(diff_val):
+    if math_type == "sub":
+        set_a_max()
+    else:
+        num_a.set(gen_ran_num(diff_val))
+        num_b.set(gen_ran_num(diff_val))
     another_button.grid_forget()
     delete_status()
-    turn_on_add()
+    turn_on_prob()
 
-def addition_choice(diff_val):
-    add_problem(diff_val)
-    turn_on_add()
+def set_a_max():
+    a = gen_ran_num(diff_val)
+    b = gen_ran_num(diff_val)
+    if a >= b:
+        num_a.set(a)
+        num_b.set(b)
+    else:
+        num_a.set(b)
+        num_b.set(a)
 
-def subtraction_choice(diff_val):
-    print("Function working")
+def math_choice(diff_val):
+    gen_problem(diff_val)
+    turn_on_prob()
 
-def turn_on_add():
+def turn_on_prob():
     set_math_sym()
     num_1_label.grid(row=1, column=1)
     symbol_1_label.grid(row=1, column=2)
@@ -190,6 +204,7 @@ def turn_on_add():
     check_button.grid(row=2, column=1, columnspan=5, sticky="we", pady=10)
     quit_button.grid(row=4, column=1, columnspan=5, sticky="we", padx=5, pady=5)
     status_bar_label.grid(row=100, column=1, columnspan=5, ipadx=5, ipady=5)
+
 
 def set_math_sym():
     global math_symbol
@@ -215,7 +230,7 @@ def quit_prog():
     root.destroy()
 
 def gave_up():
-    answer = num_a.get() + num_b.get()
+    answer = math_answer()
     status_bar_var.set(f"The correct answer was: {answer}")
     check_button.grid_forget()
     another_button.grid(row=3, column=1, columnspan=5, sticky="we", pady=10)

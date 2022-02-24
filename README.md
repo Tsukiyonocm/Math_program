@@ -38,7 +38,7 @@ These updates will be in the future. I will not be working on these until the ba
 8. Create a custom entry for the difficulty option screen. This is because sometimes the students would be learning particular numbers. For instance, only learning the addition problems of numbers + 4, or the 5 times tables for instance. 
 
 #### Next Project to work on:
-1. Start working on subtraction. There will need to be a check for making sure the first number is always higher than the second number.
+1. I believe I have some redundency in my code base currently. So I am going to be working on revamping it and see if I can minimize the work done so far to get it functioning with less overall code.
 
 2. Research OOP a bit as that might help control the functions for the math generation parts of the program.
 
