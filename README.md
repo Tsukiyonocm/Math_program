@@ -45,7 +45,9 @@ These updates will be in the future. I will not be working on these until the ba
 
 <b>gen_ran_num()</b> - This one is sort of self explanatory. It generates the random numbers that is used by the program in order to generate the math problems. In the case of Division and Subtraction, the numbers will likely need to be verified to be placed in the correct order via another function later.
 
-<b>check_answer_add()</b> - The first thing this does is check if the entry box entry is a number by calling is_num(description below).If it is, then it checks to see if the answer_entry is equal to the sum of both num_a and num_b. If yes, we display the status_bar correct message, we make the check_button disappear, and the another_problem button appears instead allowing the user to do another problem. Else, the program generates the status_bar message that you were incorrect, resets the answer_entry to blank and allows the user to try again.
+<b>check_answer()</b> - The first thing this does is check if the entry box entry is a number by calling is_num(description below). Next we call math_answer to see to figure out the answer to the particular problem regardless of type. Next this is compared to whats in the entry box, if its correct, a message is displayed, the check_button is hidden and a button appears asking if you would like to do another problem. If its wrong though, the answer you wrote disappears, a message displays telling you its wrong and a button displays asking if you want to give up.
+
+<b>math_answer</b> - We check the math_type variable against the dictionary to see what type of math problem we are doing. Once selected, the answer is generated and returned.
 
 <b>is_num()</b> - First the program tries to set the answer_entry to an integer. If this succeds, all good and we move out of the function. If it fails to do that though, such as in case of someone entering text instead of a number, the status_bar is set to text telling the user that only numbers can be entered. Then it resets the answer_entry to blank again.
 
@@ -53,19 +55,21 @@ These updates will be in the future. I will not be working on these until the ba
 
 <b>difficulty_choice</b> - This turns on all the buttons for the choice options: one_button, ten_button, hund_button, and thou_button. Then it proceeds to call turn_off_math_type function which turns off the choices of math types.
 
-<b>add_diff_set_1</b> - This allows us to update the if the user chooses the easiest difficulty. This makes the maximum value used by the problems to be 9. This will call addition_choice with the new value, and turn_off_diff_opt.
+<b>set_math_type</b> - The function is fed an argument of m, which is based on the particular button which was clicked. This is matched in the if statement and depending on the value chosen, it sets the math_type variable to that value.
 
-<b>add_diff_set_10</b> - This allows us to update the if the user chooses a middle difficulty. This makes the maximum value used by the problems to be 99. This will call addition_choice with the new value, and turn_off_diff_opt.
+<b>set_math_dif<b/> - Similar to math type, but instead we are setting up a variable which will be the max value of the problem sets we are working on.
 
-<b>add_diff_set_100</b> - This allows us to update the if the user chooses a middle difficulty. This makes the maximum value used by the problems to be 999. This will call addition_choice with the new value, and turn_off_diff_opt.
+<b>start_problems</b> - starts by calling the set_math_dif function which sets the difficulty level of the math problems. Next calls the math_choice function which generates the values and sets up the buttons, lastly it also turns off the difficulty choice buttons.
 
-<b>add_diff_set_1000</b> - This allows us to update the if the user chooses a hardest difficulty. This makes the maximum value used by the problems to be 9999. This will call addition_choice with the new value, and turn_off_diff_opt.
+<b>gen_problems</b> - firstly, we look to see what type of problem we are creating. If its division or subtraction, the numbers are generated and the max value is assigned to num_a. Else, num_a and num_b are generated, another_button is hidden, delete_status called which clears the entry box and turn_on_prob is called which turns on the buttons and labels.
 
-<b>another_problem()</b> - Reset the random integer associated with num_a and num_b. Makes the another_problem button disappear and resets the check_button to be visible instead. Then it runs the delete_status function in order to clear the entry box and the status_bar. Lastly, this also calls turn_on_add which turns on all the labels and buttons associated with doing addition problems.
+<b>set_a_max</b> - this does as its named, sets num_a to the max value of the two generated variables. We first generate two numbers a and b. Next we check to see if this is a division problem, if it is, we have to make sure there is not a 0 generated, if there is, we set that to 1 instead. Lastly, we set the higher number to num_a, and the other to num_b.
 
-<b>addition_choice</b> - This first calls another_problem in order to set the random numbers, then it calls turn_on_add in order to setup and start the first addition problem (or subsequent addition problems).
+<b>math_choice</b> - this calls the gen_problem function to generate the problem, then calls turn_on_prob to display all buttons. This might be removed in the future.
 
-<b>turn_on_add</b> - This function simply turns on all the labels, buttons, and entry box for the addition problems.
+<b>turn_on_prob</b> - first calls the set_math_sym function to set the symbol that will be used in the displaying of the math problem. Next it generates all the actual labels, buttons, and entry box for the problem to display properly.
+
+<b>set_math_sym</b> - here we just compare math_type which was set on a button press, against the dictionary called math_types. If there is a match, it sets the math_symbol variable to its value.
 
 <b>turn_off_math_type</b> - The start page where you choose between addition, subtraction, division and multiplication, this is called in order to make those choices disappear after the user makes a choice.
 

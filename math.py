@@ -11,7 +11,6 @@ root.geometry("800x600")
 # Generate Random Numbers
 def gen_ran_num(diff_val):
     rand_num = random.randint(0,diff_val)
-    # print(f"variables chose are between 0 and {diff_val}")
     return rand_num
 
 # Random Numbers to be used in problems
