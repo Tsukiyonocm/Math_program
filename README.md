@@ -40,6 +40,8 @@ These updates will be in the future. I will not be working on these until the ba
 
 7. Create a custom entry for the difficulty option screen. This is because sometimes the students would be learning particular numbers. For instance, only learning the addition problems of numbers + 4, or the 5 times tables for instance.
 
+8. I have a large chunk of space on the right side of the screen not being used. I was thinking it might be possible to display the questions you have done and post it there with the answers. If its possible to change font color, you could display if you got it right or wrong initially also, red was wrong, black was right. 
+
 
 #### Function Description
 

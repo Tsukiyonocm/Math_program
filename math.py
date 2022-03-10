@@ -20,6 +20,13 @@ diff_val = 0
 math_type = ""
 math_symbol = tk.StringVar(root, "")
 
+# Custom Variables
+strict_1 = tk.IntVar()
+strict_2 = tk.IntVar()
+num_a_max = tk.IntVar()
+num_b_max = tk.IntVar()
+is_cust = False
+
 """
 Choice Screen Options -
 This is the part of the program where you can choose which type of math problem you would like to do.
@@ -35,6 +42,9 @@ multiplication_button.grid(row=2, column=1, padx=5, pady=5, ipadx=15)
 
 division_button = tk.Button(root, text="Division", width = 20, command=lambda m="div": difficulty_choice(m))
 division_button.grid(row=2, column=2, padx=5, pady=5, ipadx=15)
+
+custom_button = tk.Button(root, text="Custom", width = 20, command= lambda m="cus": custom_menu())
+custom_button.grid(row=3, column=1, columnspan=5, sticky="we", pady=5, padx=5)
 
 
 """
@@ -88,13 +98,48 @@ give_up.grid_forget()
 
 # Quit Button
 quit_button = tk.Button(root, text="Quit For Now?", command=lambda: quit_prog())
-quit_button.grid(row=4, column=1, columnspan=5, sticky="we", padx=5, pady=5)
+quit_button.grid(row=6, column=1, columnspan=5, sticky="we", padx=5, pady=5)
 
 # Status Bar
 status_bar_var = tk.StringVar()
 status_bar_label = tk.Label(root, textvariable=status_bar_var)
 status_bar_label.grid_forget()
 
+# Custom Window
+radio_sel = tk.StringVar()
+
+add_radio = tk.Radiobutton(root, text = "Addition", variable=radio_sel, value = "add")
+add_radio.grid_forget()
+
+sub_radio = tk.Radiobutton(root, text = "Subtraction", variable=radio_sel, value= "sub")
+sub_radio.grid_forget()
+
+multi_radio = tk.Radiobutton(root, text = "Multiplication", variable=radio_sel, value = "multi")
+multi_radio.grid_forget()
+
+div_radio = tk.Radiobutton(root, text = "Division", variable=radio_sel, value = "div")
+div_radio.grid_forget()
+
+low_num_label = tk.Label(root, text="Lower Num: ")
+low_num_label.grid_forget()
+
+lower_entry = tk.Entry(root)
+lower_entry.grid_forget()
+
+strict_lower = tk.Checkbutton(root, text="Strict?", variable=strict_1)
+strict_lower.grid_forget()
+
+upper_num_label = tk.Label(root, text="Upper Num: ")
+upper_num_label.grid_forget()
+
+upper_entry = tk.Entry(root)
+upper_entry.grid_forget()
+
+strict_upper = tk.Checkbutton(root, text = "Strict?", variable=strict_2)
+strict_upper.grid_forget()
+
+start_cus_button = tk.Button(root, text="Start", command=lambda: gen_cust())
+start_cus_button.grid_forget()
 
 def check_answer():
     is_num()
@@ -141,15 +186,10 @@ def difficulty_choice(m):
 
 def set_math_type(m):
     global math_type
-    if m == "add":
-        math_type = m
-    elif m == "sub":
-        math_type = m
-    elif m == "mul":
-        math_type = m
-    elif m == "div":
-        math_type = m
-    print(math_type)
+    math_types = {"add": "add", "sub": "sub", "mul": "mul", "div": "div", "cus": "cus"}
+    for key in math_types.keys():
+        if key == m:
+            math_type = math_types[key]
 
 def set_math_dif(mv):
     global diff_val
@@ -169,11 +209,16 @@ def start_problems(mv):
 
 
 def gen_problem(diff_val):
-    if math_type == "sub" or math_type == "div":
-        set_a_max()
+    if is_cust == True:
+        print(num_a_max.get(), num_b_max.get())
+        num_a.set(gen_ran_num(int(num_a_max.get())))
+        num_b.set(gen_ran_num(int(num_b_max.get())))
     else:
-        num_a.set(gen_ran_num(diff_val))
-        num_b.set(gen_ran_num(diff_val))
+        if math_type == "sub" or math_type == "div":
+            set_a_max()
+        else:
+            num_a.set(gen_ran_num(diff_val))
+            num_b.set(gen_ran_num(diff_val))
     another_button.grid_forget()
     delete_status()
     turn_on_prob()
@@ -208,7 +253,8 @@ def turn_on_prob():
     check_button.grid(row=2, column=1, columnspan=5, sticky="we", pady=10)
     quit_button.grid(row=4, column=1, columnspan=5, sticky="we", padx=5, pady=5)
     status_bar_label.grid(row=100, column=1, columnspan=5, ipadx=5, ipady=5)
-
+    x = radio_sel.get()
+    print(x)
 
 def set_math_sym():
     global math_symbol
@@ -223,6 +269,7 @@ def turn_off_math_type():
     subtraction_button.grid_forget()
     multiplication_button.grid_forget()
     division_button.grid_forget()
+    custom_button.grid_forget()
 
 def turn_off_diff_opt():
     one_button.grid_forget()
@@ -240,6 +287,69 @@ def gave_up():
     another_button.grid(row=3, column=1, columnspan=5, sticky="we", pady=10)
     give_up.grid_forget()
     quit_button.grid(row=4, column=1, columnspan=5, sticky="we", padx=5, pady=5)
+
+def custom_menu():
+    turn_off_math_type()
+    turn_on_cus()
+
+
+def turn_on_cus():
+    add_radio.grid(row=1, column=1, sticky="w", padx=6, pady=3)
+    sub_radio.grid(row=1, column=2, sticky="w", padx=6, pady=3)
+    multi_radio.grid(row=2, column=1, sticky="w", padx=6, pady=3)
+    div_radio.grid(row=2, column=2, sticky="w", padx=6, pady=3)
+    low_num_label.grid(row=3, column=1)
+    lower_entry.grid(row=3, column=2)
+    strict_lower.grid(row=3, column=3)
+    upper_num_label.grid(row=4, column=1)
+    upper_entry.grid(row=4, column=2)
+    strict_upper.grid(row=4, column=3)
+    start_cus_button.grid(row=5, column=1, columnspan=5, sticky="we", padx=5, pady=5)
+
+def turn_off_cus():
+    add_radio.grid_forget()
+    sub_radio.grid_forget()
+    multi_radio.grid_forget()
+    div_radio.grid_forget()
+    low_num_label.grid_forget()
+    lower_entry.grid_forget()
+    strict_lower.grid_forget()
+    upper_num_label.grid_forget()
+    upper_entry.grid_forget()
+    strict_upper.grid_forget()
+    start_cus_button.grid_forget()
+
+def gen_cust():
+    global is_cust
+    global num_a
+    global num_b
+    global math_type
+    global num_a_max
+    global num_b_max
+    num_a_max.set(int(lower_entry.get()))
+    num_b_max.set(int(upper_entry.get()))
+    if strict_1.get() == 1 & strict_2.get() == 1:
+        num_a.set(lower_entry.get())
+        num_b.set(upper_entry.get())
+    elif strict_1.get() == 1:
+        num_a.set(lower_entry.get())
+        num_b.set(gen_ran_num(int(upper_entry.get())))
+    elif strict_2.get() == 1:
+        num_a.set(gen_ran_num(int(lower_entry.get())))
+        num_b.set(upper_entry.get())
+    else:
+        num_a.set(gen_ran_num(int(lower_entry.get())))
+        num_b.set(gen_ran_num(int(upper_entry.get())))
+    math_type = radio_sel.get()
+    is_cust = True
+    turn_on_prob()
+    turn_off_cus()
+
+
+def not_active(m):
+    # for testing purposes only
+    status_bar_label.grid(row=100, column=1, columnspan=5, ipadx=5, ipady=5)
+    status_bar_var.set(f"This is not active yet!! Sorry!")
 
 # Final Line
 root.mainloop()
